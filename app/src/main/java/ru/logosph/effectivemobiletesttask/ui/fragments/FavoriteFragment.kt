@@ -14,6 +14,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import ru.logosph.effectivemobiletesttask.R
 import ru.logosph.effectivemobiletesttask.databinding.FragmentFavoriteBinding
 import ru.logosph.effectivemobiletesttask.domain.models.SearchItems
+import ru.logosph.effectivemobiletesttask.ui.MainActivity
 import ru.logosph.effectivemobiletesttask.ui.fragments.adapters.getVacancyDeclension
 import ru.logosph.effectivemobiletesttask.ui.fragments.adapters.vacancyAdapterDelegate
 import ru.logosph.effectivemobiletesttask.ui.view_models.FavoriteFragmentViewModel
@@ -43,6 +44,11 @@ class FavoriteFragment : Fragment(R.layout.fragment_favorite) {
                 adapterVacancies.items = vacs
                 adapterVacancies.notifyDataSetChanged()
                 binding.countOfVacs.text = getVacancyDeclension(vacs.size)
+                val badge = (activity as MainActivity).binding.bottomNavigation.getOrCreateBadge(R.id.navigation_favorite)
+                badge.isVisible = if (vacs.isNotEmpty()) {
+                    badge.number = vacs.size
+                    true
+                } else false
             }
         }
 

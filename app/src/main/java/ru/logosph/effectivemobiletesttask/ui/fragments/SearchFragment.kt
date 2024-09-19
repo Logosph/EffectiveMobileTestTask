@@ -117,6 +117,12 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
                     binding.progressBar.visibility = View.GONE
                     (activity as MainActivity).binding.bottomNavigation.visibility = View.VISIBLE
                     binding.blockingView.visibility = View.GONE
+                    val badge = (activity as MainActivity).binding.bottomNavigation.getOrCreateBadge(R.id.navigation_favorite)
+                    badge.isVisible = if (viewModel.favorites.value.isNotEmpty()) {
+                        badge.number = viewModel.favorites.value.size
+                        true
+                    } else false
+
 
                     val message: String = when (state) {
                         NetworkStates.SUCCESS, NetworkStates.LOADING -> ""

@@ -1,6 +1,6 @@
 [versions]
 adapterdelegates4KotlinDsl = "4.3.2"
-agp = "8.7.0-alpha03"
+agp = "8.6.0"
 jkid = "0.1.1"
 koinAndroid = "3.1.2"
 kotlin = "1.9.24"
